@@ -34,7 +34,7 @@ class LoginPage extends React.Component {
         else {
             auth()
   .signInWithEmailAndPassword(this.state.username, this.state.password)
-  .then(() => this.props.navigation.navigate('Home'))
+  .then(() => this.props.navigation.navigate('main'))
   .catch(error => {
     if (error.code === 'auth/invalid-email') {
       console.log('That email address is invalid!');

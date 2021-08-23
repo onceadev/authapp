@@ -1,6 +1,9 @@
-import React from 'react';
-import {Text, View} from 'react-native';
+import React, { useState } from 'react';
+import {Text, View, StyleSheet, ImageBackground, TouchableOpacity, TouchableOpacityBase, FlatList} from 'react-native';
 import auth from '@react-native-firebase/auth';
+import chatlist from './components/chatlist';
+import CardItems from './components/cardItems'
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 function Home({navigation}) {
     function signOut () {
@@ -10,10 +13,13 @@ function Home({navigation}) {
     }
     return(
         <View>
-            <Text>Home</Text>
-        <View style={{backgroundColor: '#3B72F3', marginVertical: 20,borderRadius: 5, alignItems: 'center', paddingVertical: 16}} onTouchStart={signOut}>
-            <Text style={{color: 'white', fontWeight: 'bold', fontSize: 16}}>Sign Out</Text>
-        </View></ View>
+            <Icon name = "sign-out" onPress={signOut} size= {16}/>
+            <FlatList
+                data = {chatlist}
+                renderItem = {({item}) => <CardItems Card={item} 
+                />}
+            />
+        </View>
     )
 }
 export default Home;
