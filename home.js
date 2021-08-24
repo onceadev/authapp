@@ -4,6 +4,7 @@ import auth from '@react-native-firebase/auth';
 import chatlist from './components/chatlist';
 import CardItems from './components/cardItems'
 import Icon from 'react-native-vector-icons/FontAwesome';
+import Chats from './chats';
 
 function Home({navigation}) {
     function signOut () {
@@ -12,8 +13,8 @@ function Home({navigation}) {
 .then(() => navigation.navigate('Register'));
     }
     return(
-        <View>
-            <Icon name = "sign-out" onPress={signOut} size= {16}/>
+        <View style ={{flex: 1}}>
+            {/* <Icon name = "sign-out" onPress={signOut} size= {16}/> */}
             <FlatList
                 data = {chatlist}
                 renderItem = {({item}) => <CardItems Card={item} 

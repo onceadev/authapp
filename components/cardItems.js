@@ -36,6 +36,7 @@ function CardItem(props) {
 
 const styles = StyleSheet.create({
     Container: {
+        flex: 1,
         paddingTop: 32,
         paddingLeft: 16,
         paddingRight: 16,

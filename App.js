@@ -63,12 +63,12 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+      <Stack.Screen name="main" component={MyTabs} options = {{headerShown: false}}/>
          <Stack.Screen name="Register"
           component={CreatePage}
           options = {{headerShown: false}}
         />
         <Stack.Screen name="Login" component={LoginPage} options = {{headerShown: false}}/>
-        <Stack.Screen name="main" component={MyTabs} options = {{headerShown: false}}/>
         <Stack.Screen name="Home" component={Home} options = {{headerShown: false}}/>
       </Stack.Navigator>
     </NavigationContainer>

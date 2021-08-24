@@ -50,8 +50,7 @@ class LoginPage extends React.Component {
             <Image source={require('./image.png')}/>
             <View style={styles.Fields}>
         <Icon style={styles.IconStyle} name="user" size={20} color="#CBCBCB"/>
-        <TextInput style={styles.input} placeholder="Username" onChangeText={(username) => this.setState({username:username})} 
-            type='username'
+        <TextInput style={styles.input} placeholder="Username" onChangeText={(username) => this.setState({username:username})}
             value={this.state.username}/>
         </View>
         <View style={styles.Fields}>
@@ -134,7 +133,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#D9DCE3',
     marginBottom: 10,
     flexDirection: "row",
-    flex: 1,
+    height: 50,
     alignItems: 'center',
     justifyContent: 'flex-start',
     alignItems: 'center',
@@ -144,7 +143,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#EFDAD5',
         marginBottom: 10,
         flexDirection: "row",
-        flex: 1,
+        height: 50,
         alignItems: 'center',
         justifyContent: 'flex-start',
         alignItems: 'center',

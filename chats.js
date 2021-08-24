@@ -3,10 +3,10 @@ import {Text, View, StyleSheet, FlatList} from 'react-native';
 import ChatItems from './components/chatItems';
 import chatlist from './components/chatlist'
 
-function Chat() {
+function Chats() {
     return(
         <View style={styles.Container}>
-            <View style = {{borderBottomColor: "white", borderBottomWidth: 3, width: "100%",}}>
+            <View style = {{borderBottomColor: "white", borderBottomWidth: 2, width: "100%",}}>
                 <Text style={styles.Header}>Chats</Text>
             </View>
             <FlatList
@@ -31,4 +31,4 @@ const styles = StyleSheet.create({
         color: "white"
     },
 })
-export default Chat;
+export default Chats;
