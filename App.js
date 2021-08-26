@@ -16,7 +16,6 @@ import Home from './home';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Chat from './chats'
 import Settings from './settings';
-import Search from './search'
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
@@ -55,17 +54,6 @@ function MyTabs() {
         ),
       }}
        component={Settings}
-       />
-       <Tab.Screen
-       name ="Search"
-       options={{
-        headerShown: false,
-        tabBarLabel: 'Search',
-        tabBarIcon: ({ color, size }) => (
-          <Icon name="search" color={"#000"} size={24} />
-        ),
-      }}
-       component={Search}
        />
      </Tab.Navigator>
   );

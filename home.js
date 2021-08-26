@@ -1,47 +1,61 @@
-import React from 'react';
-import {View, FlatList, TextInput} from 'react-native';
+import React, {useState} from 'react';
+import {View, FlatList, TextInput, StyleSheet} from 'react-native';
 import auth from '@react-native-firebase/auth';
-import chatlist from './components/chatlist';
-import CardItems from './components/cardItems'
+import chatList from './components/chatlist';
+import CardItems from './components/cardItems';
 
 function Home({navigation}) {
-    function signOut () {
-        auth()
-.signOut()
-.then(() => navigation.navigate('Register'));
-    }
-    function renderHeader() {
-        return (
-          <View
-            style={{
-              backgroundColor: '#fff',
-              padding: 10,
-              marginVertical: 10,
-              borderRadius: 20
-            }}
-          >
-            <TextInput
-              autoCapitalize="none"
-              autoCorrect={false}
-              clearButtonMode="always"
-              value={chatlist}
-              // onChangeText={name => handleSearch(name)}
-              placeholder="Search"
-              style={{ backgroundColor: '#fff'}}
-            />
-          </View>
-        );
-      }
-    return(
-        <View style ={{flex: 1}}>
-            {/* <Icon name = "sign-out" onPress={signOut} size= {16}/> */}
-            <FlatList
-                data = {chatlist}
-                ListHeaderComponent={renderHeader}
-                renderItem = {({item}) => <CardItems Card={item} 
-                />}
-            />
-        </View>
-    )
+  function signOut() {
+    auth()
+      .signOut()
+      .then(() => navigation.navigate('Register'));
+  }
+  const Data = chatList;
+  const [filterData, setFilterData] = useState([]);
+  const [data, setData] = useState('');
+  const [text, setText] = useState([]);
+
+  function handleSearch(searchText) {
+    console.log('Search Text', searchText);
+    setText(searchText);
+    setData(searchText);
+
+    let filteredData = Data.filter(function (item) {
+      item.name = item.name.toLowerCase();
+      console.log(item.name);
+
+      return item.name.includes(searchText);
+    });
+
+    setFilterData(filteredData);
+  }
+  
+  return (
+    <View style={{flex: 1}}>
+      {/* <Icon name = "sign-out" onPress={signOut} size= {16}/> */}
+      <View
+        style={styles.search}>
+        <TextInput
+          value={data}
+          onChangeText={name => handleSearch(name)}
+          placeholder="Search"
+          style={{backgroundColor: '#fff'}}
+        />
+      </View>
+      <FlatList
+        data={filterData.length > 0 ? filterData : chatList}
+        renderItem={({item}) => <CardItems Card={item} />}
+      />
+    </View>
+  );
 }
+
+const styles = StyleSheet.create({
+ search: {
+    backgroundColor: '#fff',
+    padding: 10,
+    marginVertical: 10,
+    borderRadius: 20,
+  },
+})
 export default Home;

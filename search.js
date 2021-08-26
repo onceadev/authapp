@@ -200,7 +200,6 @@ export default class Search extends Component {
           isLoading: false,
           data: responseJson,
         }, () => {
-          // In this block you can do something with new state.
           this.arrayholder = responseJson;
         });
       })
